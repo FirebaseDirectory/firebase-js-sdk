@@ -1,6 +1,14 @@
 #!/bin/bash
 set -ev
 
+# Cleanup the child processes
+function cleanup {
+  echo "EXIT called: Killing child processes"
+  pkill -P $$
+}
+
+trap cleanup EXIT
+
 # Variables
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 FIREBASE_CLI="$ROOT/node_modules/.bin/firebase"
@@ -34,24 +42,19 @@ startFirebaseServer() {
 pushd $(mktemp -d)
 
 # Clone https://github.com/firebase/quickstart-js
-git clone https://github.com/firebase/quickstart-js.git
+git clone https://github.com/firebase/quickstart-js.git .
 
-# Run storage tests
-pushd quickstart-js
-
+# Start servers
 startFirebaseServer storage 5001
 startFirebaseServer auth 5002
 startFirebaseServer database 5003
 startFirebaseServer messaging 5004
 
+# Go back to firebase-js-sdk
+popd
+
 # Give the servers a few seconds to spin up
 sleep 10
 
-
 # Exec tests
 env TS_NODE_PROJECT=tsconfig.test.json "$WDIO_CLI" $ROOT/wdio.conf.js
-
-popd
-
-# Cleanup the child processes
-pkill -P $$

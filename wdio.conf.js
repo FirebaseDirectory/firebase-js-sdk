@@ -1,3 +1,5 @@
+const path = require('path');
+
 exports.config = {
     
     //
@@ -22,7 +24,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './tests-e2e/**/*.test.ts'
+        path.resolve(__dirname, './tests-e2e/**/*.test.ts')
     ],
     // Patterns to exclude.
     exclude: [
@@ -56,7 +58,7 @@ exports.config = {
         // 5 instances get started at a time.
         maxInstances: 5,
         //
-        browserName: 'firefox'
+        browserName: 'chrome'
     }],
     //
     // ===================
@@ -137,7 +139,8 @@ exports.config = {
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
-        ui: 'bdd'
+        ui: 'bdd',
+        compilers: ['ts:ts-node/register'],
     },
     //
     // =====
