@@ -15,7 +15,7 @@ describe('Storage Tests', function() {
     // Pause to allow for anonymous sign in (POTENTIAL RACE CONDITION HERE)
     browser.pause(2000);
   });
-  it('Should properly upload a file with anonymous auth', function() {
+  it('Should properly post a new topic', function() {
     const title = `Post at (${new Date().getTime()})`;
     browser.click('#add');
     browser.setValue('#new-post-title', title);
