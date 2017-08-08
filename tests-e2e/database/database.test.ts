@@ -26,4 +26,14 @@ describe('Database Tests', function() {
     // Pause to allow for anonymous sign in (POTENTIAL RACE CONDITION HERE)
     browser.pause(2000);
   });
+  it('Should properly post a new topic', function() {
+    const title = `Post at (${new Date().getTime()})`;
+
+    createNewPost(title);
+
+    const text = browser.getText(
+      '#user-posts-list .post .mdl-card__title-text'
+    );
+    expect(text).to.equal(title);
+  });
 });
