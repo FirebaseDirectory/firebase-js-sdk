@@ -7,6 +7,7 @@ function cleanup {
   pkill -P $$
 }
 
+# Setup a trap to close out server processes
 trap cleanup EXIT
 
 # Variables
@@ -18,7 +19,6 @@ SERVE_CLI="$ROOT/node_modules/.bin/serve"
 # Mount the new SDK
 "$SERVE_CLI" $ROOT/dist/browser -p 5000 &
 
-# [ -z "$TRAVIS" ] && { echo "Environment variable FIREBASE_TOKEN not set"; exit 1; }
 [ -z "$FIREBASE_TOKEN" ] && { echo "Environment variable FIREBASE_TOKEN not set"; exit 1; }
 FIREBASE_PROJECT="$1"
 [ -z "$FIREBASE_PROJECT" ] && { echo "Firebase Project ID not passed as first arg"; exit 1; }
@@ -46,9 +46,7 @@ git clone https://github.com/firebase/quickstart-js.git .
 
 # Start servers
 startFirebaseServer storage 5001
-startFirebaseServer auth 5002
-startFirebaseServer database 5003
-startFirebaseServer messaging 5004
+startFirebaseServer database 5002
 
 # Go back to firebase-js-sdk
 popd
