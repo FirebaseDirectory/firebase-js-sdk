@@ -33,7 +33,7 @@ startFirebaseServer() {
 
   # Start firebase server
   "$FIREBASE_CLI" use --add $FIREBASE_PROJECT --token $FIREBASE_TOKEN
-  "$FIREBASE_CLI" -p $PORT &
+  "$FIREBASE_CLI" serve -p $PORT &
   
   popd
 }
