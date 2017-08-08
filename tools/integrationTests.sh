@@ -32,8 +32,8 @@ startFirebaseServer() {
   pushd $DIR
 
   # Start firebase server
-  firebase use --add $FIREBASE_PROJECT --token $FIREBASE_TOKEN
-  firebase serve -p $PORT &
+  "$FIREBASE_CLI" use --add $FIREBASE_PROJECT --token $FIREBASE_TOKEN
+  "$FIREBASE_CLI" -p $PORT &
   
   popd
 }
