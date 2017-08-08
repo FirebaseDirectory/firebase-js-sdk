@@ -18,5 +18,5 @@ before_script:
   - "export DISPLAY=:99.0"
   - "mkdir -p tests/config && echo \"$PROJECT_CONFIG\" > tests/config/project.json"
 script:
-  - xvfb-run npm test
+  - npm run build
   - ./tools/integrationTests.sh jscore-sandbox-141b5

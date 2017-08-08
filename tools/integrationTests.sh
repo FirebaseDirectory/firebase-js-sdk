@@ -45,7 +45,7 @@ pushd $(mktemp -d)
 git clone https://github.com/firebase/quickstart-js.git .
 
 # Edit the source to point to our new binaries
-sed -i '.bak' 's/\/__\/firebase\/3.9.0/http:\/\/localhost:5000/g' **/*.html
+sed -i 's/\/__\/firebase\/3.9.0/http:\/\/localhost:5000/g' **/*.html
 
 # Start servers
 startFirebaseServer storage 5001
