@@ -28,7 +28,6 @@ function clearSession() {
 }
 
 describe('Database Tests', function() {
-  this.timeout(Infinity);
   beforeEach(function() {
     browser.url('http://localhost:5002');
     expect(browser.getTitle()).to.equal('Firebase Database Quickstart');
