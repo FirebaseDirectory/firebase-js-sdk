@@ -9,7 +9,7 @@ function createNewPost(title) {
   browser.click('button[type=submit]');
   // There is a delay here in view switching this could potentially cause
   // issues
-  browser.pause(1000);
+  browser.pause(1500);
 }
 
 function clearSession() {
@@ -24,7 +24,7 @@ function clearSession() {
   });
 
   // Pause to allow for anonymous sign in (POTENTIAL RACE CONDITION HERE)
-  browser.pause(2000);
+  browser.pause(5000);
 }
 
 describe('Database Tests', function() {
