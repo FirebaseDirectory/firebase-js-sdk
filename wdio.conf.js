@@ -146,6 +146,7 @@ exports.config = {
     mochaOpts: {
         ui: 'bdd',
         compilers: ['ts:ts-node/register'],
+        timeout: 30000
     },
     //
     // =====
