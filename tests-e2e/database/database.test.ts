@@ -9,7 +9,7 @@ function createNewPost(title) {
   browser.click('button[type=submit]');
   // There is a delay here in view switching this could potentially cause
   // issues
-  browser.pause(500);
+  browser.pause(1000);
 }
 
 function clearSession() {
@@ -60,6 +60,7 @@ describe('Database Tests', function() {
   });
   it('Should properly read a post/like from another user', function() {
     const title = `Likable Post (${new Date().getTime()})`;
+
     createNewPost(title);
     browser.click('#user-posts-list .post .star .not-starred');
 
