@@ -20,6 +20,8 @@ script:
 jobs:
   include:
     - stage: Integration Tests
+      env:
+        - TEST_ENV=*
       script: echo "Implement Integration Tests"
 
 # Misc Addons/Configs
