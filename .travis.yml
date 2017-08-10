@@ -10,6 +10,11 @@ env:
   matrix:
     - TEST_ENV=node
     - TEST_ENV=browser
+install:
+  - npm install -g yarn
+  - yarn
+  # Yarn defaults to an old version, make sure we
+  # get an up to date version
 before_script:
   - export PATH=$PATH:./node_modules/.bin
   - mkdir -p tests/config && echo "$PROJECT_CONFIG" > tests/config/project.json
